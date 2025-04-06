@@ -151,6 +151,30 @@
 
         .about-text {
             flex: 1;
+            line-height: 1.8;
+            font-size: 1.05rem;
+            max-width: 650px;
+        }
+
+        .about-text p {
+            margin-bottom: 1.2rem;
+            color: var(--text-primary);
+            opacity: 0.9;
+        }
+
+        .about-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* For better paragraph spacing on mobile */
+        @media (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-text {
+                margin-bottom: 2rem;
+            }
         }
 
         .skills {
@@ -160,6 +184,7 @@
             border-radius: 10px;
             border-left: 4px solid;
             animation: borderHueShift 30s infinite linear;
+            text-align: center;
         }
 
         .skills h3 {
@@ -376,18 +401,22 @@
             <h2>About Me</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>I am a data science student at NYU passionate about extracting insights from complex datasets and building predictive models. My focus areas include machine learning, statistical analysis, and data visualization. I enjoy tackling challenging problems and creating data-driven solutions that make a meaningful impact.</p>
+                    <p>I'm Luke Sullivan, a 20-year-old data scientist blending technical expertise with the strategic mindset I've developed as an esports captain. My professional journey has taken me through forecasting models for plasma centers, delivering data-driven insights, and providing IT support—all while completing my undergraduate degree in just three years. Now pursuing my Masters at NYU, I transform complex challenges into clear solutions using Python, SQL, and machine learning techniques. Whether I'm analyzing time series data or leading development projects, I bring the same competitive edge and analytical thinking that earned championships in collegiate esports to every professional challenge I tackle.</p>
                 </div>
                 <div class="skills">
                     <h3>My Skills</h3>
                     <div class="skill-tags">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">SQL</span>
-                        <span class="skill-tag">Machine Learning</span>
-                        <span class="skill-tag">Data Visualization</span>
-                        <span class="skill-tag">Statistical Analysis</span>
-                        <span class="skill-tag">Time Series Forecasting</span>
+                        <span class="skill-tag"><b>Python (NumPy, Pandas, Scikit-learn, Matplotlib, PyTorch) for data analysis, ML, visualization, & optimization (Cython, CUDA)</b></span>
+                        <span class="skill-tag"><b>SQL for querying, data manipulation, and relational and RDD management for big data</b></span>
+                        <span class="skill-tag"><b>Time series forecasting, data exploration, pattern recognition, and machine learning model development</b></span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Jira</span>
+                        <span class="skill-tag">Hadoop</span>
+                        <span class="skill-tag">Spark</span>
+                        <span class="skill-tag">Dask</span>
                         <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Dremel</span>
+                        <span class="skill-tag">Docker</span>
                         <span class="skill-tag">Tableau</span>
                     </div>
                 </div>
@@ -416,24 +445,24 @@
                 <div class="project-card">
                     <div class="project-img"></div>
                     <div class="project-content">
-                        <h3>Tornado Weather Correlation Analysis</h3>
+                        <h3>Plasma Forecasting Model</h3>
                         <p>todo</p>
                         <div class="tech-stack">
                             <span class="tech">Python</span>
-                            <span class="tech">Pandas</span>
-                            <span class="tech">Merged Datasets</span>
+                            <span class="tech">Time-series Analysis</span>
+                            <span class="tech">ML Modeling</span>
                         </div>
                     </div>
                 </div>
                 <div class="project-card">
                     <div class="project-img"></div>
                     <div class="project-content">
-                        <h3>Meteorite Data Analysis</h3>
+                        <h3>Tornado Weather Analysis</h3>
                         <p>todo</p>
                         <div class="tech-stack">
                             <span class="tech">Python</span>
                             <span class="tech">Tableau</span>
-                            <span class="tech">Geolocation Data</span>
+                            <span class="tech">Merged Datasets</span>
                         </div>
                     </div>
                 </div>
@@ -447,11 +476,11 @@
     <!-- View Other Work Section -->
     <section class="other-work">
         <div class="container">
-            <h2>View Other Work</h2>
+            <h2>View my other work</h2>
             <div class="work-buttons">
                 <a href="data-analysis.html" class="btn">Web Development</a>
                 <a href="machine-learning.html" class="btn">Game Development</a>
-                <a href="visualizations.html" class="btn">IT & Security</a>
+                <a href="visualizations.html" class="btn">Video Editting</a>
                 <a href="research.html" class="btn">More Projects</a>
             </div>
         </div>
@@ -461,7 +490,7 @@
     <footer id="contact">
         <div class="container">
             <p>© 2025 Luke Sullivan Portfolio</p>
-            <p class="contact">Contact me at: theeluke13@gmail.com</p>
+            <p class="contact">Contact me at: </p>
         </div>
     </footer>
 
