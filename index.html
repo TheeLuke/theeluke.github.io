@@ -5,16 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luke Sullivan Portfolio</title>
     <style>
-        /* Dark Mode Color Scheme with Changing Hue */
         :root {
             --bg-primary: #0c0c0c;
             --bg-secondary: #141414;
             --bg-elevated: #1c1c1c;
             --text-primary: #E0E0E0;
             --text-secondary: #B0B0B0;
-            --accent-teal: #00c9b6;
-            --accent-blue: #3a8eff;
-            --accent-purple: #b042d9;
+            --accent-teal: #e2e2e2; /* Original accent for animations */
+            --accent-blue: #ffffff; /* Original accent for animations */
+            --accent-purple: #d5d5d5; /* Original accent for animations */
         }
 
         * {
@@ -28,6 +27,7 @@
             color: var(--text-primary);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
+            cursor: none; /* Hide the default cursor */
         }
 
         .container {
@@ -36,9 +36,8 @@
             padding: 0 20px;
         }
 
-        /* Navbar - Updated to NOT stay fixed */
         .navbar {
-            position: absolute; /* Changed from fixed to absolute */
+            position: absolute;
             top: 20px;
             right: 30px;
             z-index: 100;
@@ -52,7 +51,7 @@
             letter-spacing: 2px;
             font-weight: 300;
             text-transform: uppercase;
-            animation: hueShift 30s infinite linear;
+            animation: textHueShift 10s infinite linear; /* Renamed to avoid confusion */
             transition: all 0.3s ease;
         }
 
@@ -60,7 +59,6 @@
             text-shadow: 0 0 8px currentColor;
         }
 
-        /* Header Section */
         header {
             height: 100vh;
             display: flex;
@@ -75,7 +73,7 @@
         header h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
-            animation: hueShift 30s infinite linear;
+            animation: textHueShift 10s infinite linear;
             text-shadow: 0 0 10px currentColor;
         }
 
@@ -83,11 +81,10 @@
             font-size: 1.5rem;
             color: var(--text-secondary);
             margin-bottom: 2rem;
-            animation: hueShift 30s infinite linear;
+            animation: textHueShift 10s infinite linear;
             text-shadow: 0 0 8px currentColor;
         }
 
-        /* Scroll Indicator */
         .scroll-indicator {
             position: absolute;
             bottom: 40px;
@@ -100,35 +97,28 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            cursor: pointer;
-            border: 2px solid;
-            animation: borderHueShift 30s infinite linear, bounce 2s infinite;
+            cursor: none; /* Handled by body, but good practice */
+            border: 2px solid; /* Initial border, color managed by animation/JS */
+            animation: borderHueShift 10s infinite linear, bounce 2s infinite;
         }
 
         .scroll-indicator svg {
             width: 24px;
             height: 24px;
             fill: none;
-            stroke: var(--text-primary);
+            stroke: var(--text-primary); /* SVG stroke won't animate with textHueShift directly */
             stroke-width: 2;
             stroke-linecap: round;
             stroke-linejoin: round;
-            animation: hueShift 30s infinite linear;
+            /* animation: textHueShift 10s infinite linear; /* Removed, SVG stroke color is complex to animate this way */
         }
 
         @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0) translateX(-50%);
-            }
-            40% {
-                transform: translateY(-10px) translateX(-50%);
-            }
-            60% {
-                transform: translateY(-5px) translateX(-50%);
-            }
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-10px) translateX(-50%); }
+            60% { transform: translateY(-5px) translateX(-50%); }
         }
 
-        /* About Section */
         .about {
             padding: 5rem 0;
             background-color: var(--bg-secondary);
@@ -138,7 +128,7 @@
             font-size: 2.5rem;
             margin-bottom: 2rem;
             text-align: center;
-            animation: hueShift 30s infinite linear;
+            animation: textHueShift 10s infinite linear;
             text-shadow: 0 0 10px currentColor;
         }
 
@@ -156,25 +146,12 @@
             max-width: 650px;
         }
 
-        .about-text p {
-            margin-bottom: 1.2rem;
-            color: var(--text-primary);
-            opacity: 0.9;
-        }
+        .about-text p { margin-bottom: 1.2rem; color: var(--text-primary); opacity: 0.9; }
+        .about-text p:last-child { margin-bottom: 0; }
 
-        .about-text p:last-child {
-            margin-bottom: 0;
-        }
-
-        /* For better paragraph spacing on mobile */
         @media (max-width: 768px) {
-            .about-content {
-                flex-direction: column;
-            }
-            
-            .about-text {
-                margin-bottom: 2rem;
-            }
+            .about-content { flex-direction: column; }
+            .about-text { margin-bottom: 2rem; }
         }
 
         .skills {
@@ -182,14 +159,23 @@
             background-color: var(--bg-elevated);
             padding: 2rem;
             border-radius: 10px;
-            border-left: 4px solid;
-            animation: borderHueShift 30s infinite linear;
+            border-left: 4px solid; /* Initial border, color managed by animation/JS */
+            animation: borderHueShift 10s infinite linear; /* For border-left-color */
             text-align: center;
         }
+        /* Specific animation for skills if borderHueShift doesn't target border-left-color well enough */
+        @keyframes skillsBorderHueShift {
+            0% { border-left-color: var(--accent-teal); }
+            33% { border-left-color: var(--accent-blue); }
+            66% { border-left-color: var(--accent-purple); }
+            100% { border-left-color: var(--accent-teal); }
+        }
+        .skills { animation: skillsBorderHueShift 10s infinite linear; }
+
 
         .skills h3 {
             margin-bottom: 1rem;
-            animation: hueShift 30s infinite linear;
+            animation: textHueShift 10s infinite linear;
             text-shadow: 0 0 8px currentColor;
         }
 
@@ -202,16 +188,12 @@
             font-size: 0.9rem;
         }
 
-        /* Recent Work Section */
-        .recent-work {
-            padding: 5rem 0;
-        }
-
+        .recent-work { padding: 5rem 0; }
         .recent-work h2 {
             font-size: 2.5rem;
             margin-bottom: 3rem;
             text-align: center;
-            animation: hueShift 30s infinite linear;
+            animation: textHueShift 10s infinite linear;
             text-shadow: 0 0 10px currentColor;
         }
 
@@ -225,13 +207,9 @@
             background-color: var(--bg-secondary);
             border-radius: 10px;
             overflow: hidden;
-            transition: transform 0.3s ease;
-            border: 2px solid;
-            animation: borderHueShift 30s infinite linear;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid; /* Initial border, color managed by animation/JS */
+            animation: borderHueShift 10s infinite linear;
         }
 
         .project-img {
@@ -251,107 +229,57 @@
             height: 100%;
             background: linear-gradient(45deg, var(--accent-teal), var(--accent-blue), var(--accent-purple));
             opacity: 0.7;
-            animation: gradientShift 30s infinite linear;
+            animation: gradientShift 10s infinite linear; /* Original gradient animation remains */
+            transition: opacity 0.4s ease-in-out; /* Keep transition if needed for other effects */
         }
 
-        .project-content {
-            padding: 1.5rem;
-        }
-
+        .project-content { padding: 1.5rem; }
         .project-content h3 {
             margin-bottom: 0.5rem;
-            animation: hueShift 30s infinite linear;
+            animation: textHueShift 10s infinite linear;
             text-shadow: 0 0 8px currentColor;
         }
+        .project-content p { color: var(--text-secondary); margin-bottom: 1rem; }
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+        .tech { font-size: 0.8rem; padding: 0.25rem 0.5rem; background-color: var(--bg-primary); border-radius: 4px; }
 
-        .project-content p {
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-        }
-
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .tech {
-            font-size: 0.8rem;
-            padding: 0.25rem 0.5rem;
-            background-color: var(--bg-primary);
-            border-radius: 4px;
-        }
-
-        /* Button Styles */
-        .btn-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 3rem;
-        }
-
+        .btn-container { display: flex; justify-content: center; margin-top: 3rem; }
         .btn {
             display: inline-block;
             padding: 0.8rem 2rem;
             background-color: var(--bg-elevated);
             color: var(--text-primary);
-            border: 2px solid;
+            border: 2px solid; /* Initial border, color managed by animation/JS */
             border-radius: 30px;
             font-size: 1rem;
             font-weight: bold;
             text-decoration: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            animation: borderHueShift 30s infinite linear;
+            cursor: none; /* Handled by body */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Keep transform transition */
+            animation: borderHueShift 10s infinite linear;
         }
+        /* Hover effects for transform and shadow still handled by JS for consistency */
 
-        .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        /* View Other Work Section */
-        .other-work {
-            padding: 5rem 0;
-            background-color: var(--bg-secondary);
-            text-align: center;
-        }
-
+        .other-work { padding: 5rem 0; background-color: var(--bg-secondary); text-align: center; }
         .other-work h2 {
             font-size: 2.5rem;
             margin-bottom: 3rem;
-            animation: hueShift 30s infinite linear;
+            animation: textHueShift 10s infinite linear;
             text-shadow: 0 0 10px currentColor;
         }
+        .work-buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; margin-top: 2rem; }
 
-        .work-buttons {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--bg-primary);
-            padding: 3rem 0;
-            text-align: center;
-        }
-
-        footer p {
-            color: var(--text-secondary);
-        }
-
+        footer { background-color: var(--bg-primary); padding: 3rem 0; text-align: center; }
+        footer p { color: var(--text-secondary); }
         .contact {
             margin-top: 1rem;
-            animation: hueShift 30s infinite linear;
+            animation: textHueShift 10s infinite linear;
             font-weight: bold;
             text-shadow: 0 0 8px currentColor;
         }
 
         /* Animations */
-        @keyframes hueShift {
+        @keyframes textHueShift { /* Renamed from hueShift to be specific to text */
             0% { color: var(--accent-teal); }
             33% { color: var(--accent-blue); }
             66% { color: var(--accent-purple); }
@@ -364,16 +292,41 @@
             66% { border-color: var(--accent-purple); }
             100% { border-color: var(--accent-teal); }
         }
-
+        
         @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
+
+        /* Cursor Light Styles */
+        #cursor-light {
+            position: fixed;
+            width: 45px; /* Increased size for a more prominent glow */
+            height: 45px;
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            display: none; /* Initially hidden */
+            /* Background will be set by JavaScript for rainbow effect */
+            display: flex; /* For centering the dot */
+            justify-content: center;
+            align-items: center;
+        }
+
+        #cursor-dot {
+            width: 7px; /* Slightly larger dot */
+            height: 7px;
+            background-color: white;
+            border-radius: 50%;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.7); /* Optional: slight glow for the dot itself */
+            position: relative; /* Ensure it's within the light's stacking context */
+            z-index: 1; /* Above the light's radial gradient */
+        }
     </style>
 </head>
 <body>
-    <!-- Navbar - now positioned absolutely instead of fixed -->
     <nav class="navbar">
         <a href="#home">HOME</a>
         <a href="#about">ABOUT</a>
@@ -381,112 +334,93 @@
         <a href="#contact">CONTACT</a>
     </nav>
 
-    <!-- Header Section -->
     <header id="home">
         <div class="container">
-            <h1>Hi, I'm Luke Sullivan.</h1>
-            <p>A Data Science Student at NYU.</p>
+            <h1>Hi. I'm Luke Sullivan,</h1>
+            <p>a Data Science Master's Student at NYU.</p>
         </div>
-        <!-- Scroll Indicator -->
-        <div class="scroll-indicator">
+        <div class="scroll-indicator interactive-border-target">
             <svg viewBox="0 0 24 24">
                 <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
         </div>
     </header>
 
-    <!-- About Section -->
     <section class="about" id="about">
         <div class="container">
             <h2>About Me</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>I'm Luke Sullivan, a 20-year-old data scientist blending technical expertise with the strategic mindset I've developed as an esports captain. My professional journey has taken me through forecasting models for plasma centers, delivering data-driven insights, and providing IT support—all while completing my undergraduate degree in just three years. Now pursuing my Masters at NYU, I transform complex challenges into clear solutions using Python, SQL, and machine learning techniques. Whether I'm analyzing time series data or leading development projects, I bring the same competitive edge and analytical thinking that earned championships in collegiate esports to every professional challenge I tackle.</p>
+                    <p>My name is Luke Sullivan, a 20-year-old data scientist blending technical expertise with the strategic mindset I've developed as an esports captain. My professional journey has taken me through forecasting models for plasma centers, delivering data-driven insights, and providing IT support—all while completing my undergraduate degree in just three years. Now pursuing my Masters at NYU, I transform complex challenges into clear solutions using Python, SQL, and machine learning techniques. Whether I'm analyzing time series data or leading development projects, I bring the same competitive edge and analytical thinking that earned championships in collegiate esports to every professional challenge.</p>
                 </div>
-                <div class="skills">
+                <div class="skills interactive-border-target">
                     <h3>My Skills</h3>
                     <div class="skill-tags">
-                        <span class="skill-tag"><b>Python (NumPy, Pandas, Scikit-learn, Matplotlib, PyTorch) for data analysis, ML, visualization, & optimization (Cython, CUDA)</b></span>
+                        <span class="skill-tag"><b>Python (NumPy, Pandas, Scikit-learn, Matplotlib, PyTorch) for big data, data analysis, visualizations, and machine learning.</b></span>
                         <span class="skill-tag"><b>SQL for querying, data manipulation, and relational and RDD management for big data</b></span>
                         <span class="skill-tag"><b>Time series forecasting, data exploration, pattern recognition, and machine learning model development</b></span>
-                        <span class="skill-tag">Git</span>
-                        <span class="skill-tag">Jira</span>
-                        <span class="skill-tag">Hadoop</span>
-                        <span class="skill-tag">Spark</span>
-                        <span class="skill-tag">Dask</span>
-                        <span class="skill-tag">AWS</span>
-                        <span class="skill-tag">Dremel</span>
-                        <span class="skill-tag">Docker</span>
-                        <span class="skill-tag">Tableau</span>
+                        <span class="skill-tag">Hadoop</span> <span class="skill-tag">Spark</span> <span class="skill-tag">Git</span>
+                        <span class="skill-tag">jira</span> <span class="skill-tag">Google Cloud</span> <span class="skill-tag">AWS</span><span class="skill-tag">Office Suite</span>
+                        <span class="skill-tag">Dask</span> <span class="skill-tag">Docker</span> <span class="skill-tag">Tableau</span><span class="skill-tag">Power BI</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Recent Work Section -->
     <section class="recent-work" id="work">
         <div class="container">
             <h2>My Recent Work</h2>
             <div class="projects-grid">
-                <div class="project-card">
+                <div class="project-card interactive-border-target">
                     <div class="project-img"></div>
                     <div class="project-content">
-                        <h3>Movie Ratings Analysis & Model</h3>
-                        <p>todo</p>
+                        <h3>User Segmentation & Movie Recommendation Model</h3>
+                        <p>Capstone project for Big Data class at NYU.</p>
                         <div class="tech-stack">
-                            <span class="tech">Python</span>
-                            <span class="tech">Pandas</span>
-                            <span class="tech">Scikit-learn</span>
-                            <span class="tech">Matplotlib</span>
+                            <span class="tech">Hadoop</span> <span class="tech">Spark</span> <span class="tech">ML Modeling</span> <span class="tech">Python</span>
                         </div>
                     </div>
                 </div>
-                <div class="project-card">
+                <div class="project-card interactive-border-target">
                     <div class="project-img"></div>
                     <div class="project-content">
-                        <h3>Plasma Forecasting Model</h3>
-                        <p>todo</p>
+                        <h3>Sports Replay Extraction Model</h3>
+                        <p>Project for Adv. Python in Data Science at NYU.</p>
                         <div class="tech-stack">
-                            <span class="tech">Python</span>
-                            <span class="tech">Time-series Analysis</span>
-                            <span class="tech">ML Modeling</span>
+                            <span class="tech">Computer Vision</span> <span class="tech">Multiprocessing</span> <span class="tech">OCR</span> <span class="tech">ML Modeling</span>
                         </div>
                     </div>
                 </div>
-                <div class="project-card">
+                <div class="project-card interactive-border-target">
                     <div class="project-img"></div>
                     <div class="project-content">
-                        <h3>Tornado Weather Analysis</h3>
-                        <p>todo</p>
+                        <h3>HR Data Analysis & Dashboard</h3>
+                        <p>Personal Sharepoint project testing O-data pipeline.</p>
                         <div class="tech-stack">
-                            <span class="tech">Python</span>
-                            <span class="tech">Tableau</span>
-                            <span class="tech">Merged Datasets</span>
+                            <span class="tech">O-Data Pipeline</span> <span class="tech">Power BI</span> <span class="tech">Data Analysis</span>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="btn-container">
-                <a href="projects.html" class="btn">View All Projects</a>
+                <a href="projects.html" class="btn interactive-border-target">View Data Projects</a>
             </div>
         </div>
     </section>
 
-    <!-- View Other Work Section -->
     <section class="other-work">
         <div class="container">
             <h2>View my other work</h2>
             <div class="work-buttons">
-                <a href="data-analysis.html" class="btn">Web Development</a>
-                <a href="machine-learning.html" class="btn">Game Development</a>
-                <a href="visualizations.html" class="btn">Video Editting</a>
-                <a href="research.html" class="btn">More Projects</a>
+                <a href="data-analysis.html" class="btn interactive-border-target">Web Development</a>
+                <a href="machine-learning.html" class="btn interactive-border-target">Game Development</a>
+                <a href="visualizations.html" class="btn interactive-border-target">Video Editting</a>
+                <a href="research.html" class="btn interactive-border-target">More Projects</a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer id="contact">
         <div class="container">
             <p>© 2025 Luke Sullivan Portfolio</p>
@@ -494,53 +428,213 @@
         </div>
     </footer>
 
+    <div id="cursor-light">
+        <div id="cursor-dot"></div>
+    </div>
+
     <script>
-        // Interactive elements for project cards
-        const projectCards = document.querySelectorAll('.project-card');
+        document.addEventListener('DOMContentLoaded', () => {
+            const cursorLight = document.getElementById('cursor-light');
+            const cursorDot = document.getElementById('cursor-dot'); // Not directly manipulated after initial setup, but good to have reference.
+            
+            // Configuration for the rainbow light
+            let currentHue = 0;
+            const hueIncrement = 1; // MODIFIED: Speed of rainbow change (previously 2, now 1 for slower pace)
+            const lightSaturation = '100%';
+            const lightBrightness = '60%'; // Adjusted for a slightly deeper color, less pastel
+            const lightOuterOpacity = '0.7'; // Opacity of the main glow
+            const lightMidOpacity = '0.4';   // Opacity of mid-part of glow
+            
+            let animationFrameId = null;
+            let currentlyHoveredInteractiveBorder = null;
+            let lastInteractedElement = null; // To track the element for mouseout style restoration
 
-        projectCards.forEach(card => {
-            card.addEventListener('mouseover', () => {
-                card.style.transform = 'translateY(-10px) scale(1.02)';
-                card.style.transition = 'transform 0.3s ease';
-                card.style.boxShadow = '0 10px 20px rgba(0,0,0,0.3)';
-            });
+            // Store original animation names to restore them properly
+            const originalAnimationStyles = new Map();
 
-            card.addEventListener('mouseout', () => {
-                card.style.transform = 'translateY(0) scale(1)';
-                card.style.boxShadow = 'none';
-            });
-        });
-
-        // Smooth scroll for navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
+            // Query all elements that should have their border interact with the cursor light
+            const interactiveBorderElements = document.querySelectorAll('.interactive-border-target');
+            interactiveBorderElements.forEach(el => {
+                // Store original animation name if it exists, and border color
+                const computedStyle = getComputedStyle(el);
+                originalAnimationStyles.set(el, {
+                    animationName: computedStyle.animationName,
+                    animationPlayState: computedStyle.animationPlayState,
+                    borderColor: computedStyle.borderColor,
+                    borderLeftColor: computedStyle.borderLeftColor // Specifically for .skills
                 });
             });
-        });
 
-        // Button hover effects
-        const buttons = document.querySelectorAll('.btn');
-        
-        buttons.forEach(btn => {
-            btn.addEventListener('mouseover', () => {
-                btn.style.transform = 'translateY(-5px)';
-                btn.style.boxShadow = '0 5px 15px rgba(0,0,0,0.3)';
+            // Function to find the closest interactive parent
+            function findInteractiveTarget(element) {
+                let current = element;
+                while (current) {
+                    if (current.classList && current.classList.contains('interactive-border-target')) {
+                        return current;
+                    }
+                    current = current.parentElement;
+                }
+                return null;
+            }
+            
+            // Main animation loop for the cursor light and interactions
+            function updateAndAnimateCursor() {
+                currentHue = (currentHue + hueIncrement) % 360;
+                const currentColorString = `hsl(${currentHue}, ${lightSaturation}, ${lightBrightness})`;
+                
+                // Construct the radial gradient for the light
+                // Adjusted for a slightly softer falloff: inner bright, then colored glow, then fades
+                const radialGradientString = `radial-gradient(circle, 
+                    hsla(${currentHue}, ${lightSaturation}, ${parseFloat(lightBrightness) + 10}%, ${lightOuterOpacity}) 0%, 
+                    hsla(${currentHue}, ${lightSaturation}, ${lightBrightness}, ${lightMidOpacity}) 40%, 
+                    hsla(${currentHue}, ${lightSaturation}, ${lightBrightness}, 0) 70%)`;
+                
+                cursorLight.style.background = radialGradientString;
+
+                // If an interactive border element is being hovered, update its border color
+                if (currentlyHoveredInteractiveBorder) {
+                    // For .skills, specifically target borderLeftColor. For others, borderColor.
+                    if (currentlyHoveredInteractiveBorder.classList.contains('skills')) {
+                        currentlyHoveredInteractiveBorder.style.borderLeftColor = currentColorString;
+                    } else {
+                        currentlyHoveredInteractiveBorder.style.borderColor = currentColorString;
+                    }
+                }
+                
+                animationFrameId = requestAnimationFrame(updateAndAnimateCursor);
+            }
+
+            document.addEventListener('mousemove', (e) => {
+                // Move the cursor light
+                cursorLight.style.left = e.clientX + 'px';
+                cursorLight.style.top = e.clientY + 'px';
+                if (cursorLight.style.display === 'none') {
+                    cursorLight.style.display = 'flex'; // Use flex to keep dot centered
+                    if (!animationFrameId) { // Start animation if not already running
+                        animationFrameId = requestAnimationFrame(updateAndAnimateCursor);
+                    }
+                }
+
+                const elementUnderCursor = document.elementFromPoint(e.clientX, e.clientY);
+                const interactiveTarget = findInteractiveTarget(elementUnderCursor);
+
+                if (interactiveTarget !== currentlyHoveredInteractiveBorder) {
+                    // Mouse moved out of the previously hovered interactive element
+                    if (currentlyHoveredInteractiveBorder) {
+                        const originalStyles = originalAnimationStyles.get(currentlyHoveredInteractiveBorder);
+                        if (originalStyles) {
+                            currentlyHoveredInteractiveBorder.style.animationName = originalStyles.animationName;
+                            currentlyHoveredInteractiveBorder.style.animationPlayState = originalStyles.animationPlayState;
+                            // Restore specific border colors
+                            if (currentlyHoveredInteractiveBorder.classList.contains('skills')) {
+                                currentlyHoveredInteractiveBorder.style.borderLeftColor = originalStyles.borderLeftColor;
+                            } else {
+                                 currentlyHoveredInteractiveBorder.style.borderColor = originalStyles.borderColor;
+                            }
+                        } else { // Fallback if somehow not in map
+                             currentlyHoveredInteractiveBorder.style.borderColor = '';
+                             currentlyHoveredInteractiveBorder.style.animationName = '';
+                        }
+                    }
+
+                    currentlyHoveredInteractiveBorder = interactiveTarget;
+
+                    // Mouse moved into a new interactive element
+                    if (currentlyHoveredInteractiveBorder) {
+                        // Pause its current border animation by removing the animation name or setting play state
+                        // Setting animationName to 'none' is more direct for override
+                        currentlyHoveredInteractiveBorder.style.animationName = 'none';
+                        // The border color will be set in the animation loop
+                    }
+                }
+                lastInteractedElement = elementUnderCursor; // Keep track of the actual element under cursor
+            });
+
+            document.body.addEventListener('mouseleave', () => {
+                cursorLight.style.display = 'none';
+                if (animationFrameId) {
+                    cancelAnimationFrame(animationFrameId);
+                    animationFrameId = null;
+                }
+                // Reset any hovered element when mouse leaves the document
+                if (currentlyHoveredInteractiveBorder) {
+                    const originalStyles = originalAnimationStyles.get(currentlyHoveredInteractiveBorder);
+                     if (originalStyles) {
+                        currentlyHoveredInteractiveBorder.style.animationName = originalStyles.animationName;
+                        currentlyHoveredInteractiveBorder.style.animationPlayState = originalStyles.animationPlayState;
+                        if (currentlyHoveredInteractiveBorder.classList.contains('skills')) {
+                            currentlyHoveredInteractiveBorder.style.borderLeftColor = originalStyles.borderLeftColor;
+                        } else {
+                             currentlyHoveredInteractiveBorder.style.borderColor = originalStyles.borderColor;
+                        }
+                    } else {
+                         currentlyHoveredInteractiveBorder.style.borderColor = '';
+                         currentlyHoveredInteractiveBorder.style.animationName = '';
+                    }
+                    currentlyHoveredInteractiveBorder = null;
+                }
             });
             
-            btn.addEventListener('mouseout', () => {
-                btn.style.transform = 'translateY(0)';
-                btn.style.boxShadow = 'none';
+            document.body.addEventListener('mouseenter', () => {
+                // This event is less reliable if the mouse enters over an iframe or similar.
+                // The mousemove event will handle showing the cursor and starting animation.
+                if (cursorLight.style.display === 'none' && !animationFrameId) {
+                     // animationFrameId = requestAnimationFrame(updateAndAnimateCursor); // Redundant if mousemove handles it
+                }
             });
-        });
 
-        // Scroll indicator functionality
-        document.querySelector('.scroll-indicator').addEventListener('click', () => {
-            document.querySelector('.about').scrollIntoView({
-                behavior: 'smooth'
+            // --- Maintain existing interactive behaviors (transforms, shadows) ---
+            const projectCards = document.querySelectorAll('.project-card');
+            projectCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-10px) scale(1.02)';
+                    card.style.boxShadow = '0 10px 20px rgba(0,0,0,0.3)';
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0) scale(1)';
+                    card.style.boxShadow = 'none';
+                });
             });
+
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('mouseover', () => { // Using mouseover for buttons for consistency with original
+                    btn.style.transform = 'translateY(-5px)';
+                    btn.style.boxShadow = '0 5px 15px rgba(0,0,0,0.3)';
+                });
+                btn.addEventListener('mouseout', () => {
+                    btn.style.transform = 'translateY(0)';
+                    btn.style.boxShadow = 'none';
+                });
+            });
+
+            // Smooth scroll for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Scroll indicator functionality
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+            if (scrollIndicator) {
+                scrollIndicator.addEventListener('click', () => {
+                    document.querySelector('.about').scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            }
+            
+            // Start the animation loop if the cursor is already in the window on load (edge case)
+            // A brief delay to ensure everything is rendered.
+            setTimeout(() => {
+                if (cursorLight.style.display === 'flex' && !animationFrameId) {
+                     animationFrameId = requestAnimationFrame(updateAndAnimateCursor);
+                }
+            }, 100);
         });
     </script>
 </body>
