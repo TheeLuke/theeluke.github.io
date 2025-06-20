@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommendation - Luke Sullivan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Back to Portfolio Link -->
+    <header class="bg-white border-b border-gray-200">
+        <div class="container mx-auto px-6 py-4">
+            <a href="../index.html" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                Back to Portfolio
+            </a>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-6 md:p-12">
+        <div class="max-w-4xl mx-auto">
+            
+            <!-- Project Header -->
+            <div class="mb-12">
+                <p class="text-base font-semibold text-indigo-600 tracking-wide uppercase">User Segmentation & Implicit Feedback</p>
+                <h1 class="mt-2 text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight">Movie Twins & Recommendation Model</h1>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap gap-4 mb-12">
+                <a href="https://github.com/TheeLuke/Movie-Ratings-Analysis.git" class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 -ml-1 h-5 w-5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    View Code on GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/luke-c-sullivan/overlay/projects/1426074477/multiple-media-viewer/?profileId=ACoAAEkOs9YBqltjV_oVWz9yUF5_JMCG2fSCtNI&treasuryMediaId=1747330280920" class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 -ml-1 h-5 w-5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    Download Report
+                </a>
+            </div>
+            
+            <!-- Main Content Area -->
+            <div class="prose prose-lg max-w-none">
+                
+                <!-- Project Description -->
+                <section>
+                    <h2><b>Project Description</b></h2>
+                    <p>This project develops a two-part system for user segmentation and personalized movie recommendations using the MovieLens dataset, which contains over 33 million ratings from 330,000 users. The system was built on NYU's Dataproc cluster using the Hadoop Distributed File System (HDFS).</p>
+                    <br>
+                    <p>The first part of the project focuses on Customer Segmentation to identify "movie twins"—pairs of users with highly similar viewing tastes. This was achieved by applying the MinHash LSH (Locality Sensitive Hashing) algorithm to find users with a high Jaccard similarity in their sets of "liked" movies (defined as those rated 3.0 or higher).</p>
+                    <br>
+                    <p>The second part involves building a Movie Recommendation engine. This component uses an Alternating Least Squares (ALS) model configured for implicit feedback, which combines both movie ratings and user-applied tags to generate personalized recommendations. The performance of this personalized ALS model was benchmarked against a non-personalized Popularity Baseline model that recommends the most popular movies to all users.</p>
+                    <img src="movie_rec.png" alt="Project Screenshot" class="rounded-lg shadow-md my-8"
+                         onerror="this.onerror=null;this.src='https://placehold.co/800x450/e2e8f0/334155?text=Image+Not+Found';">
+                </section>
+
+                <!-- Results Section -->
+                <section>
+                    <h2><b>Results</b></h2>
+                    <p>The project yielded successful outcomes in both user segmentation and movie recommendation, demonstrating the effectiveness of the chosen models.</p>
+                    <br>
+                    <p><b>Customer Segmentation:</b></p>
+                    <ul class="list-disc list-inside">
+                        <li>The MinHash LSH model successfully identified 100 pairs of "movie twins" with Jaccard similarity scores of 90% or higher. Many of the top pairs had a perfect Jaccard similarity of 1.0, indicating identical sets of liked movies.</li>
+                        <li>To validate the quality of these pairings, the average Pearson correlation of movie ratings for the identified "twin" pairs was calculated and compared to that of random user pairs.</li>
+                        <li>The "movie twin" pairs achieved an average Pearson correlation of 0.3123.</li>
+                        <li>The random baseline pairs had an average Pearson correlation of 0.2214.</li>
+                        <li>This higher correlation confirms that the MinHash LSH approach effectively identifies users with genuinely similar rating behaviors.</li>
+                    </ul>
+                    <br>
+                    <p><b>Movie Recommendation:</b></p>
+                    <ul class="list-disc list-inside">
+                        <li>The personalized ALS model significantly outperformed the Popularity Baseline model across all evaluation metrics on the test set. Due to its "cold start" strategy, the ALS model made predictions for a smaller subset of users (23,355) who were present in the training data.</li>
+                        <li>The results clearly show the value of personalization for users known to the model.</li>
+                    </ul>
+                </section>
+                
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-white mt-12 border-t border-gray-200">
+        <div class="container mx-auto px-6 py-4 text-center text-gray-500 text-sm">
+            &copy; 2025 Luke Sullivan. All Rights Reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
