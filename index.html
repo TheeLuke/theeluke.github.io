@@ -23,6 +23,12 @@
             background-size: cover;
             background-position: center;
         }
+        .skill-category {
+            display: none;
+        }
+        .skill-category-active {
+            display: block;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -56,24 +62,82 @@
                     </div>
                 </div>
                 <br>
-                <!-- Skills Section -->
+                <!-- Skills Section Carousel -->
                 <div class="flex-shrink-0 pb-8">
-                    <h2 class="text-2xl font-semibold text-gray-900">Skills</h2>
-                    <div class="mt-4 flex flex-wrap gap-2">
-                        <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Python</span>
-                        <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">SQL</span>
-                        <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">R</span>
-                        <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Pandas</span>
-                        <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">NumPy</span>
-                        <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Scikit-learn</span>
-                        <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">TensorFlow</span>
-                        <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">PyTorch</span>
-                        <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Tableau</span>
-                        <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">JavaScript</span>
-                        <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">HTML/CSS</span>
-                        <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">React</span>
-                        <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Git</span>
-                        <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Docker</span>
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-2xl font-semibold text-gray-900">Skills: <span id="skill-category-title" class="text-indigo-600"></span></h2>
+                        <div class="flex space-x-2">
+                            <button id="prev-skill" aria-label="Previous skill category" class="p-2 bg-gray-200 hover:bg-gray-300 rounded-full transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                            </button>
+                            <button id="next-skill" aria-label="Next skill category" class="p-2 bg-gray-200 hover:bg-gray-300 rounded-full transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="skills-carousel-container" class="relative">
+                        <!-- Skill Category: Programming Languages -->
+                        <div id="languages" class="skill-category">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Python</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Pandas</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">NumPy</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Scikit-Learn</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">PyTorch</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">OpenCV</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Flask</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">SQL</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">PySpark</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Java</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">PHP</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">R</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">JavaScript</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">HTML</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">CSS</span>
+                            </div>
+                        </div>
+                        <!-- Skill Category: Data & Statistical Analysis -->
+                        <div id="analysis" class="skill-category">
+                             <div class="flex flex-wrap gap-2">
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Power BI</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Tableau</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Excel</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Regression Analysis</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Hypothesis Testing</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Predictive Modeling</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Data Storytelling</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Data Cleaning</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">ETL Processes</span>
+                            </div>
+                        </div>
+                        <!-- Skill Category: Big Data & Machine Learning -->
+                        <div id="big-data" class="skill-category">
+                             <div class="flex flex-wrap gap-2">
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Hadoop</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Spark</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Google Cloud</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">AWS RedShift</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Databricks</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">MongoDB</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">MySQL</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Relational Databases</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Computer Vision</span>
+                            </div>
+                        </div>
+                        <!-- Skill Category: Other -->
+                        <div id="other-skills" class="skill-category">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Git</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">GitHub</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Jira</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Scrum</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Project Management</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">CI/CD</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">AI</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Problem Solving</span>
+                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Communication</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </header>
@@ -202,7 +266,44 @@
                     showTab(button.dataset.tab);
                 });
             });
+            
+            // Skills Carousel Functionality
+            const prevSkillBtn = document.getElementById('prev-skill');
+            const nextSkillBtn = document.getElementById('next-skill');
+            const skillCategories = document.querySelectorAll('.skill-category');
+            const categoryTitleEl = document.getElementById('skill-category-title');
+            
+            const categoryTitles = {
+                'languages': 'Programming Languages',
+                'analysis': 'Data & Statistical Analysis',
+                'big-data': 'Big Data & Machine Learning',
+                'other-skills': 'Other'
+            };
+
+            let currentSkillIndex = 0;
+
+            function showSkillCategory(index) {
+                skillCategories.forEach((category, i) => {
+                    category.classList.toggle('skill-category-active', i === index);
+                });
+                const currentCategory = skillCategories[index];
+                categoryTitleEl.textContent = categoryTitles[currentCategory.id];
+            }
+
+            nextSkillBtn.addEventListener('click', () => {
+                currentSkillIndex = (currentSkillIndex + 1) % skillCategories.length;
+                showSkillCategory(currentSkillIndex);
+            });
+
+            prevSkillBtn.addEventListener('click', () => {
+                currentSkillIndex = (currentSkillIndex - 1 + skillCategories.length) % skillCategories.length;
+                showSkillCategory(currentSkillIndex);
+            });
+
+            showSkillCategory(currentSkillIndex); // Show initial skill category
         });
+
+        
     </script>
 
 </body>
