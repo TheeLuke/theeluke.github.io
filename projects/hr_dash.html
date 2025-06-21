@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Replay Extraction - Luke Sullivan</title>
+    <title>HR Dashboard - Luke Sullivan</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,8 +31,8 @@
             
             <!-- Project Header -->
             <div class="mb-12">
-                <p class="text-base font-semibold text-indigo-600 tracking-wide uppercase">Computer Vision</p>
-                <h1 class="mt-2 text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight">Sports Replay Extraction Model</h1>
+                <p class="text-base font-semibold text-indigo-600 tracking-wide uppercase">Data Analysis & Reporting</p>
+                <h1 class="mt-2 text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight">HR Analytics Dashboard</h1>
             </div>
 
             <!-- Action Buttons -->
@@ -45,7 +45,7 @@
                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 -ml-1 h-5 w-5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                     View Code on GitHub
                 </a>
-                <a href="sports_replay.pdf" class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors">
+                <a href="HR_dashboard.pdf" class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 -ml-1 h-5 w-5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
                     Download Report
                 </a>
@@ -57,24 +57,38 @@
                 <!-- Project Description -->
                 <section>
                     <h2><b>Project Description</b></h2>
-                    <p>This project addresses the inefficiency of manually identifying sports highlights by creating an automated system to extract replay segments directly from broadcast videos.  Developed for a Master's in Data Science project at NYU, the model uses a non-learning-based computer vision approach to analyze visual patterns within the broadcast.  Adapted from a framework by Javid et al. 2016, the system identifies replays by detecting the gradual transitions (like fades and dissolves) that typically mark their beginning and end, and verifying the absence of score captions, which are usually only present during live gameplay.  The primary contribution of this work was to optimize this framework, focusing on improving computational efficiency and overall performance through techniques like multiprocessing and data streaming.</p>
-                    <img src="sports_replay.png" alt="Project Screenshot" class="rounded-lg shadow-md my-8"
-                         onerror="this.onerror=null;this.src='https://placehold.co/800x450/e2e8f0/334155?text=Image+Not+Found';">
+                    <p>This project demonstrates the creation of a data pipeline to connect a SharePoint O-Data feed to Power BI for HR data analysis. The process began by setting up a custom SharePoint site and populating it with an HR Analytics dataset from Kaggle, which contained 38 columns of employee data. An OData endpoint URL was then constructed to allow Power BI to access the data list, named "HR Analytics," from the SharePoint site.</p>
+                    <br>
+                    <p>Once the OData feed was connected to Power BI, several data transformation steps were performed to clean the dataset, including:</p>
+                    <ul class="list-disc list-inside">
+                        <li>Removing duplicate entries based on employee ID.</li>
+                        <li>Deleting columns that were unnecessary for the analysis.</li>
+                        <li>Renaming column headers for clarity.</li>
+                        <li>Correcting the data type for numerical columns from 'text' to 'whole number'.</li>
+                    </ul>
                 </section>
-
+                <br>
                 <!-- Results Section -->
                 <section>
-                    <h2><b>Results</b></h2>
-                    <p>The final optimized model was tested on five minutes of the 2022 NFL Super Bowl, which contained 35,965 frames.  The system demonstrated strong performance, achieving an overall accuracy of <b>92.97%</b> and a replay class F1-score of <b>78.96%.</b></p>
+                    <p><b>The final result is a four-page Power BI report designed to analyze the HR data.</b></p>
                     <br>
-                    <p>A key focus of the project was performance optimization. Several methods were compared against a baseline Python implementation:</p>
-                    <ul class="list-disc list-inside">
-                        <li><b>CUDA (GPU Acceleration):</b> This approach was unexpectedly slower than the baseline, which was likely due to the overhead of data transfers between the CPU and GPU and other compatibility issues.</li>
-                        <li><b>Multiprocessing:</b> By parallelizing the Score Caption (SC) detection across multiple CPU cores, this method significantly reduced processing time compared to the baseline.</li>
-                        <li><b>Multiprocessing + Streaming:</b> This combined approach yielded the best performance.  By reading the video data in streams rather than loading it all into memory, this model minimized memory usage and optimized data handling.</li>
-                    </ul>
-                    <br>
-                    <p>The final optimized model was approximately <b>2.6 times faster</b> than the initial baseline, highlighting that efficient CPU parallelism and data handling were more effective for this task than GPU acceleration.</p>
+
+                    <p>The first page is an HR dashboard providing a general overview of employee attrition and departmental breakdowns. This page required a custom DAX measure to accurately calculate the attrition rate.</p>
+                    <img src="HR_dashboard/HR_dashboard-1.png" alt="Project Screenshot" class="rounded-lg shadow-md my-8"
+                         onerror="this.onerror=null;this.src='https://placehold.co/800x450/e2e8f0/334155?text=Image+Not+Found';">
+                    
+                    <p>The second page offers a deeper analysis of employee turnover, examining attrition across different departments, positions, and salary brackets, with interactive filters for drilling down by demographics like age and marital status.</p>
+                    <img src="HR_dashboard/HR_dashboard-2.png" alt="Project Screenshot" class="rounded-lg shadow-md my-8"
+                         onerror="this.onerror=null;this.src='https://placehold.co/800x450/e2e8f0/334155?text=Image+Not+Found';">
+                    
+                    <p>The third page details the company's workforce composition, with charts showing the distribution of employees by education and age, as well as a gender breakdown for each department.</p>
+                    <img src="HR_dashboard/HR_dashboard-3.png" alt="Project Screenshot" class="rounded-lg shadow-md my-8"
+                         onerror="this.onerror=null;this.src='https://placehold.co/800x450/e2e8f0/334155?text=Image+Not+Found';">
+                    
+                    <p>The final page focuses on compensation, presenting the distribution of monthly income across the company with breakdowns by position and gender.</p>
+                    <img src="HR_dashboard/HR_dashboard-4.png" alt="Project Screenshot" class="rounded-lg shadow-md my-8"
+                         onerror="this.onerror=null;this.src='https://placehold.co/800x450/e2e8f0/334155?text=Image+Not+Found';">
+                    
                 </section>
                 
             </div>
