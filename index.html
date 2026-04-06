@@ -1,302 +1,361 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luke Sullivan - Data Science Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        /* Style for the active tab button */
-        .tab-active {
-            border-bottom-color: #1F2937;
-            font-weight: 600;
-            color: #1F2937;
-        }
-        /* Ensure background images cover the card area */
-        .project-card {
-            background-size: cover;
-            background-position: center;
-        }
-        .skill-category {
-            display: none;
-        }
-        .skill-category-active {
-            display: block;
-        }
-    </style>
+    <title>Luke Sullivan – Data Science Portfolio</title>
+    <meta name="description"
+        content="Luke Sullivan's portfolio — Data Scientist & NYU Master's Student specializing in Python, SQL, and machine learning.">
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-gray-50 text-gray-800">
-    <div class="container mx-auto">
-        <div class="flex flex-col lg:flex-row">
-            
-            <!-- Left Column: Sticky Bio -->
-            <header class="w-full lg:w-2/5 lg:h-screen lg:sticky lg:top-0 p-8 lg:p-16 flex flex-col justify-center">
-                <br><br>
-                <div class="flex-grow flex flex-col justify-center">
-                    
-                    <!-- Profile Picture -->
-                    <img src="profile.jfif"
-                         alt="Luke Sullivan Profile Picture"
-                         class="w-32 h-32 rounded-full mx-auto mb-6 shadow-xl"
-                         onerror="this.onerror=null;this.src='https://placehold.co/128x128/e0e7ff/4338ca?text=LS';">
 
-                    <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 text-center">Hello. I'm <span class="whitespace-nowrap">Luke Sullivan</span>,</h1>
-                    <p class="mt-4 text-lg md:text-xl text-gray-600 text-center">a Master's in Data Science student at NYU.</p>
-                    <p class="mt-8 text-gray-600 leading-relaxed text-justify">
-                    I'm a 21-year-old data scientist blending technical expertise with the strategic leadership mindset I've developed as a capstone project manager and esports captain. My professional journey has taken me through forecasting models for plasma centers, delivering data-driven insights, and providing IT support—all while completing my undergraduate degree in just three years. Now pursuing my Masters at NYU, I transform complex challenges into clear solutions using Python, SQL, and machine learning techniques. I am an extremely motivated individual and eager to apply my knowledge and skills in the workforce.
-                    </p>
-                    
-                    <!-- Social Links -->
-                    <div class="mt-8 flex justify-center space-x-4">
-                        <a href="https://www.linkedin.com/in/luke-c-sullivan/" aria-label="LinkedIn" class="w-10 h-10 bg-gray-200 hover:bg-gray-300 rounded-full flex items-center justify-center transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                        </a>
-                        <a href="https://github.com/TheeLuke" aria-label="GitHub" class="w-10 h-10 bg-gray-200 hover:bg-gray-300 rounded-full flex items-center justify-center transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                        </a>
-                        <a href="mailto:theeluke13@gmail.com" aria-label="Email" class="w-10 h-10 bg-gray-200 hover:bg-gray-300 rounded-full flex items-center justify-center transition-colors">
-                           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                        </a>
-                        <a href="resume.pdf" aria-label="Resume" class="w-10 h-10 bg-gray-200 hover:bg-gray-300 rounded-full flex items-center justify-center transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                        </a>
-                    </div>
+<body>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    </button>
+
+    <div class="container">
+
+        <!-- ===== BENTO GRID ===== -->
+        <div class="bento-grid">
+
+            <!-- 1 · Profile Card -->
+            <div class="bento-card profile-card col-span-1 lg-col-span-1">
+                <div class="profile-photo-wrapper">
+                    <img src="profile.jfif" alt="Luke Sullivan" class="profile-photo"
+                        onerror="this.onerror=null;this.src='https://placehold.co/160x160/1e1e2e/818cf8?text=LS';">
+                    <div class="status-dot"></div>
                 </div>
+                <h1 class="profile-name">Luke Sullivan</h1>
+                <p class="profile-title">Jr. Data Scientist</p>
+                <a href="mailto:theeluke13@gmail.com" class="btn-primary">Contact Me</a>
+            </div>
+
+            <!-- 2 · Hero Card -->
+            <div class="bento-card hero-card col-span-2 lg-col-span-2">
+                <h2 class="hero-heading">
+                    Hello. I'm <span class="accent">Luke Sullivan</span>.
+                </h2>
+                <p class="hero-sub">
+                    Passionate about leveraging data to solve real-world problems.
+                </p>
                 <br>
-                <!-- Skills Section Carousel -->
-                <div class="flex-shrink-0 pb-8">
-                    <div class="flex justify-between items-center mb-4">
-                        <h2 class="text-2xl font-semibold text-gray-900">Skills: <span id="skill-category-title" class="text-indigo-600"></span></h2>
-                        <div class="flex space-x-2">
-                            <button id="prev-skill" aria-label="Previous skill category" class="p-2 bg-gray-200 hover:bg-gray-300 rounded-full transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-                            </button>
-                            <button id="next-skill" aria-label="Next skill category" class="p-2 bg-gray-200 hover:bg-gray-300 rounded-full transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div id="skills-carousel-container" class="relative">
-                        <!-- Skill Category: Programming Languages -->
-                        <div id="languages" class="skill-category">
-                            <div class="flex flex-wrap gap-2">
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Python</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Pandas</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">NumPy</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Scikit-Learn</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">PyTorch</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">OpenCV</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Flask</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">SQL</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">PySpark</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Java</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">PHP</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">R</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">JavaScript</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">HTML</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">CSS</span>
-                            </div>
-                        </div>
-                        <!-- Skill Category: Data & Statistical Analysis -->
-                        <div id="analysis" class="skill-category">
-                             <div class="flex flex-wrap gap-2">
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Power BI</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Tableau</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Excel</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Regression Analysis</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Hypothesis Testing</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Predictive Modeling</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Data Storytelling</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Data Cleaning</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">ETL Processes</span>
-                            </div>
-                        </div>
-                        <!-- Skill Category: Big Data & Machine Learning -->
-                        <div id="big-data" class="skill-category">
-                             <div class="flex flex-wrap gap-2">
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Hadoop</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Spark</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Google Cloud</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">AWS RedShift</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Databricks</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">MongoDB</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">MySQL</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Relational Databases</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Computer Vision</span>
-                            </div>
-                        </div>
-                        <!-- Skill Category: Other -->
-                        <div id="other-skills" class="skill-category">
-                            <div class="flex flex-wrap gap-2">
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Git</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">GitHub</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Jira</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Scrum</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Project Management</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">CI/CD</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">AI</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Problem Solving</span>
-                                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-3 py-1 rounded-full">Communication</span>
-                            </div>
-                        </div>
+                <p class="hero-sub">
+                    Current Work & School:
+                </p>
+                <p class="hero-sub"><b>
+                        - Jr. Data Engineer & Analyst for Sun Auto Tire & Service
+                </p></b>
+                <p class="hero-sub"><b>
+                        - Master in Data Science at New York University
+                </p></b>
+            </div>
+
+            <!-- 3 · Social Links -->
+            <div class="bento-card social-card col-span-1 lg-col-span-1">
+                <div class="social-grid">
+                    <a href="https://www.linkedin.com/in/luke-c-sullivan/" target="_blank" class="social-link linkedin"
+                        aria-label="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                            </path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/TheeLuke" target="_blank" class="social-link github"
+                        aria-label="GitHub">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                            </path>
+                        </svg>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="mailto:luke.connor.sullivan+portfolio@gmail.com" class="social-link email"
+                        aria-label="Email">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <span>Email</span>
+                    </a>
+                    <a href="resume.pdf" target="_blank" class="social-link resume" aria-label="Resume">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <polyline points="10 9 9 9 8 9"></polyline>
+                        </svg>
+                        <span>Resume</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 4 · About Me -->
+            <div class="bento-card col-span-2">
+                <h3 class="section-label">
+                    <span class="section-dot indigo"></span>
+                    About Me
+                </h3>
+                <p class="about-text">
+                    Data Scientist and Machine Learning Engineer with a proven track record of designing scalable ETL
+                    pipelines and deploying predictive models. Currently driving enterprise analytics at Sun Auto Tire &
+                    Service through customer segmentation models, churn prediction, and automated GenAI documentation
+                    agents. Advancing an M.S. in Data Science at New York University after completing a B.S. in Computer
+                    Information Systems in three years. Combines advanced technical proficiency in Python, Spark, and
+                    machine learning modeling with strategic leadership experience as a Capstone Project Manager and
+                    Varsity Team Captain.
+                </p>
+            </div>
+
+            <!-- 5 · Skills -->
+            <div class="bento-card skills-card col-span-full lg-col-span-2">
+                <h3 class="section-label">
+                    <span class="section-dot purple"></span>
+                    Skills
+                </h3>
+                <div class="skills-section">
+                    <p class="skills-category">Languages</p>
+                    <div class="skills-tags">
+                        <span class="skill-pill">Python</span>
+                        <span class="skill-pill">SQL</span>
+                        <span class="skill-pill">PySpark</span>
+                        <span class="skill-pill">Java</span>
+                        <span class="skill-pill">JavaScript</span>
+                        <span class="skill-pill">PHP</span>
+                        <span class="skill-pill">HTML/CSS</span>
                     </div>
                 </div>
-            </header>
-
-            <!-- Right Column: Scrollable Projects -->
-            <main class="w-full lg:w-3/5 p-8 lg:p-16 lg:overflow-y-auto">
-                <!-- Tab Navigation -->
-                <div class="flex border-b border-gray-300 mb-8">
-                    <button data-tab="data-science" class="tab-btn px-6 py-3 text-gray-600 border-b-2 border-transparent hover:border-gray-900 transition-colors tab-active">Data Science</button>
-                    <button data-tab="development" class="tab-btn px-6 py-3 text-gray-600 border-b-2 border-transparent hover:border-gray-900 transition-colors">Development</button>
-                    <button data-tab="other" class="tab-btn px-6 py-3 text-gray-600 border-b-2 border-transparent hover:border-gray-900 transition-colors">Other</button>
-                </div>
-
-                <!-- Tab Content Panels -->
-                <div>
-                    <!-- Data Science Projects -->
-                    <div id="data-science" class="tab-content grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <a href="projects/sports_replay.html" class="project-card relative block aspect-square rounded-lg p-6 flex flex-col justify-end overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all text-white" style="background-image: url('sports_replay.png');">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                            <div class="relative">
-                                <h3 class="font-semibold text-lg">Sports Replay Extraction Model</h3>
-                                <p class="text-sm text-gray-300 mt-1">Computer Vision</p>
-                            </div>
-                        </a>
-                        <a href="projects/movie_rec.html" class="project-card relative block aspect-square rounded-lg p-6 flex flex-col justify-end overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all text-white" style="background-image: url('movie_rec.jpg');">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                            <div class="relative">
-                                <h3 class="font-semibold text-lg">Movie Twins & Recommendation Model</h3>
-                                <p class="text-sm text-gray-300 mt-1">User Segmentation & Implicit Feedback</p>
-                            </div>
-                        </a>
-                        <a href="projects/hr_dash.html" class="project-card relative block aspect-square rounded-lg p-6 flex flex-col justify-end overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all text-white" style="background-image: url('hr_dashboard.png');">
-                           <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                            <div class="relative">
-                                <h3 class="font-semibold text-lg">HR Analytics Dashboard</h3>
-                                <p class="text-sm text-gray-300 mt-1">Data Analysis & Reporting</p>
-                            </div>
-                        </a>
-                        <a href="projects/prof.html" class="project-card relative block aspect-square rounded-lg p-6 flex flex-col justify-end overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all text-white" style="background-image: url('prof.png');">
-                           <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                            <div class="relative">
-                                <h3 class="font-semibold text-lg">Assessing Professor Effectiveness</h3>
-                                <p class="text-sm text-gray-300 mt-1">Data & Predictive Analysis</p>
-                            </div>
-                        </a>
-                        <a href="#" class="project-card relative block aspect-square rounded-lg p-6 flex flex-col justify-end overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all text-white" style="background-image: url('https://placehold.co/600x600/16a34a/ffffff?text=Movie+Ratings');">
-                           <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                            <div class="relative">
-                                <h3 class="font-semibold text-lg">Movie Ratings Analysis</h3>
-                                <p class="text-sm text-gray-300 mt-1">Data Analysis</p>
-                            </div>
-                        </a>
-                        <a href="#" class="project-card relative block aspect-square rounded-lg p-6 flex flex-col justify-end overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all text-white" style="background-image: url('https://placehold.co/600x600/16a34a/ffffff?text=Eye+Tracking');">
-                           <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                            <div class="relative">
-                                <h3 class="font-semibold text-lg">Pupil Eye Tracking Pipeline</h3>
-                                <p class="text-sm text-gray-300 mt-1">Data ETL & Analysis</p>
-                            </div>
-                        </a>
-                    </div>
-
-
-                    <!-- https://placehold.co/600x600/16a34a/ffffff?text=HR+Dashboard -->
-
-                    <!-- Development Projects -->
-                    <div id="development" class="tab-content hidden grid-cols-1 md:grid-cols-2 gap-6">
-                         <a href="#" class="project-card relative block aspect-square rounded-lg p-6 flex flex-col justify-end overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all text-white" style="background-image: url('https://placehold.co/600x600/4f46e5/ffffff?text=Portfolio');">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                            <div class="relative">
-                                <h3 class="font-semibold text-lg">My Portfolio</h3>
-                                <p class="text-sm text-gray-300 mt-1">HTML, CSS, & JavaScript</p>
-                            </div>
-                        </a>
-                        <a href="#" class="project-card relative block aspect-square rounded-lg p-6 flex flex-col justify-end overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all text-white" style="background-image: url('https://placehold.co/600x600/4f46e5/ffffff?text=Paradise+Notes');">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                            <div class="relative">
-                                <h3 class="font-semibold text-lg">Paradise Notes</h3>
-                                <p class="text-sm text-gray-300 mt-1">Fabric.JS, PHP, JavaScript</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <!-- Other Projects -->
-                    <div id="other" class="tab-content hidden grid-cols-1 md:grid-cols-2 gap-6">
-                        <a href="#" class="project-card relative block aspect-square rounded-lg p-6 flex flex-col justify-end overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all text-white" style="background-image: url('https://placehold.co/600x600/9333ea/ffffff?text=PC+Builds');">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                            <div class="relative">
-                                <h3 class="font-semibold text-lg">Personal PC Builds</h3>
-                                <p class="text-sm text-gray-300 mt-1">2 For myself, helped friends</p>
-                            </div>
-                        </a>
+                <div class="skills-section">
+                    <p class="skills-category">Data & ML</p>
+                    <div class="skills-tags">
+                        <span class="skill-pill">Pandas</span>
+                        <span class="skill-pill">PyTorch</span>
+                        <span class="skill-pill">Scikit-Learn</span>
+                        <span class="skill-pill">Hadoop</span>
+                        <span class="skill-pill">Dask</span>
+                        <span class="skill-pill">MongoDB</span>
                     </div>
                 </div>
-            </main>
+                <div class="skills-section">
+                    <p class="skills-category">Tools</p>
+                    <div class="skills-tags">
+                        <span class="skill-pill">SSMS</span>
+                        <span class="skill-pill">Power BI</span>
+                        <span class="skill-pill">Azure DevOps</span>
+                        <span class="skill-pill">Git</span>
+                        <span class="skill-pill">Docker</span>
+                        <span class="skill-pill">Jira</span>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /bento-grid -->
+
+        <!-- ===== PROJECTS SECTION ===== -->
+        <div class="projects-header">
+            <div>
+                <h2 class="projects-title">Projects</h2>
+                <p class="projects-subtitle">A selection of my work</p>
+            </div>
+            <div class="filter-tabs">
+                <button class="filter-btn active" data-filter="all" onclick="filterProjects('all')">All</button>
+                <button class="filter-btn" data-filter="data-science" onclick="filterProjects('data-science')">Data
+                    Science</button>
+                <button class="filter-btn" data-filter="development"
+                    onclick="filterProjects('development')">Dev</button>
+            </div>
         </div>
-    </div>
+
+        <div class="projects-grid" id="projects-grid">
+
+            <!-- Data Science -->
+            <a href="projects/toxicity_detection.html" class="project-card" data-category="data-science">
+                <div class="project-bg" style="background-image: url('nlp_poster.jpg');"></div>
+                <div class="project-overlay"></div>
+                <div class="project-info">
+                    <p class="project-category-label">Natural Language Processing</p>
+                    <h3 class="project-card-title">Gaming Toxicity Detection</h3>
+                </div>
+            </a>
+
+            <a href="projects/survival_analysis.html" class="project-card" data-category="data-science">
+                <div class="project-bg" style="background-image: url('survival_poster.jpg');"></div>
+                <div class="project-overlay"></div>
+                <div class="project-info">
+                    <p class="project-category-label">Deep Learning</p>
+                    <h3 class="project-card-title">Attention-Based Survival Analysis</h3>
+                </div>
+            </a>
+
+            <a href="projects/sports_replay.html" class="project-card" data-category="data-science">
+                <div class="project-bg" style="background-image: url('sports_replay.png');"></div>
+                <div class="project-overlay"></div>
+                <div class="project-info">
+                    <p class="project-category-label">Computer Vision</p>
+                    <h3 class="project-card-title">Sports Replay Extraction</h3>
+                </div>
+            </a>
+
+            <a href="projects/movie_rec.html" class="project-card" data-category="data-science">
+                <div class="project-bg" style="background-image: url('movie_rec.jpg');"></div>
+                <div class="project-overlay"></div>
+                <div class="project-info">
+                    <p class="project-category-label">Recommendation System</p>
+                    <h3 class="project-card-title">Movie Twins Model</h3>
+                </div>
+            </a>
+
+            <a href="projects/hr_dash.html" class="project-card" data-category="data-science">
+                <div class="project-bg" style="background-image: url('hr_dashboard.png');"></div>
+                <div class="project-overlay"></div>
+                <div class="project-info">
+                    <p class="project-category-label">Analytics</p>
+                    <h3 class="project-card-title">HR Analytics Dashboard</h3>
+                </div>
+            </a>
+
+            <a href="projects/prof.html" class="project-card" data-category="data-science">
+                <div class="project-bg" style="background-image: url('prof.png');"></div>
+                <div class="project-overlay"></div>
+                <div class="project-info">
+                    <p class="project-category-label">Predictive Analysis</p>
+                    <h3 class="project-card-title">Professor Effectiveness</h3>
+                </div>
+            </a>
+
+            <!-- Development -->
+            <a href="#" class="project-card" data-category="development">
+                <div class="project-bg" style="background-image: url('spigot.png');"></div>
+                <div class="project-overlay"></div>
+                <div class="project-info">
+                    <p class="project-category-label">Java Development</p>
+                    <h3 class="project-card-title">MC Spigot Plugins</h3>
+                </div>
+            </a>
+
+            <a href="#" class="project-card" data-category="development">
+                <div class="project-bg"
+                    style="background-image: url('https://placehold.co/600x600/4f46e5/ffffff?text=Home Server');"></div>
+                <div class="project-overlay"></div>
+                <div class="project-info">
+                    <p class="project-category-label">Linux Server</p>
+                    <h3 class="project-card-title">Home Server Project</h3>
+                </div>
+            </a>
+
+            <a href="#" class="project-card" data-category="development">
+                <div class="project-bg"
+                    style="background-image: url('https://placehold.co/600x600/4f46e5/ffffff?text=Portfolio');"></div>
+                <div class="project-overlay"></div>
+                <div class="project-info">
+                    <p class="project-category-label">Web Dev</p>
+                    <h3 class="project-card-title">My Portfolio</h3>
+                </div>
+            </a>
+
+            <a href="#" class="project-card" data-category="development">
+                <div class="project-bg"
+                    style="background-image: url('https://placehold.co/600x600/4f46e5/ffffff?text=Paradise+Notes');">
+                </div>
+                <div class="project-overlay"></div>
+                <div class="project-info">
+                    <p class="project-category-label">Full Stack</p>
+                    <h3 class="project-card-title">Paradise Notes</h3>
+                </div>
+            </a>
+
+            <!-- Other -->
+            <a href="#" class="project-card" data-category="other">
+                <div class="project-bg"
+                    style="background-image: url('https://placehold.co/600x600/9333ea/ffffff?text=PC+Builds');"></div>
+                <div class="project-overlay"></div>
+                <div class="project-info">
+                    <p class="project-category-label">Hardware</p>
+                    <h3 class="project-card-title">Personal PC Builds</h3>
+                </div>
+            </a>
+
+        </div><!-- /projects-grid -->
+
+        <footer class="site-footer">
+            &copy; <span id="footer-year"></span> Luke Sullivan. All rights reserved.
+        </footer>
+
+    </div><!-- /container -->
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Project Tabs Functionality
-            const tabButtons = document.querySelectorAll('.tab-btn');
-            const tabContents = document.querySelectorAll('.tab-content');
+        /* ---- Theme Toggle ---- */
+        (function () {
+            const toggle = document.getElementById('theme-toggle');
+            const html = document.documentElement;
 
-            function showTab(tabId) {
-                tabContents.forEach(content => {
-                    content.style.display = (content.id === tabId) ? 'grid' : 'none';
-                });
-                tabButtons.forEach(button => {
-                    button.classList.toggle('tab-active', button.dataset.tab === tabId);
-                });
-            }
-            showTab('data-science'); // Show initial project tab
-            tabButtons.forEach(button => button.addEventListener('click', () => showTab(button.dataset.tab)));
-
-            // Skills Carousel Functionality
-            const prevSkillBtn = document.getElementById('prev-skill');
-            const nextSkillBtn = document.getElementById('next-skill');
-            const skillCategories = document.querySelectorAll('.skill-category');
-            const categoryTitleEl = document.getElementById('skill-category-title');
-            
-            const categoryTitles = {
-                'languages': 'Programming Languages',
-                'analysis': 'Data & Statistical Analysis',
-                'big-data': 'Big Data & Machine Learning',
-                'other-skills': 'Other'
-            };
-
-            let currentSkillIndex = 0;
-
-            function showSkillCategory(index) {
-                skillCategories.forEach((category, i) => {
-                    category.classList.toggle('skill-category-active', i === index);
-                });
-                const currentCategory = skillCategories[index];
-                categoryTitleEl.textContent = categoryTitles[currentCategory.id];
+            // Load saved preference
+            const saved = localStorage.getItem('theme');
+            if (saved) {
+                html.setAttribute('data-theme', saved);
             }
 
-            nextSkillBtn.addEventListener('click', () => {
-                currentSkillIndex = (currentSkillIndex + 1) % skillCategories.length;
-                showSkillCategory(currentSkillIndex);
+            toggle.addEventListener('click', () => {
+                const current = html.getAttribute('data-theme');
+                const next = current === 'dark' ? 'light' : 'dark';
+                html.setAttribute('data-theme', next);
+                localStorage.setItem('theme', next);
+            });
+        })();
+
+        /* ---- Project Filtering ---- */
+        function filterProjects(category) {
+            const cards = document.querySelectorAll('.project-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.filter === category);
             });
 
-            prevSkillBtn.addEventListener('click', () => {
-                currentSkillIndex = (currentSkillIndex - 1 + skillCategories.length) % skillCategories.length;
-                showSkillCategory(currentSkillIndex);
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.classList.remove('hidden');
+                    card.animate([
+                        { opacity: 0, transform: 'scale(0.95)' },
+                        { opacity: 1, transform: 'scale(1)' }
+                    ], { duration: 300, easing: 'ease-out' });
+                } else {
+                    card.classList.add('hidden');
+                }
             });
+        }
 
-            showSkillCategory(currentSkillIndex); // Show initial skill category
-        });
-
-        
+        /* ---- Footer Year ---- */
+        document.getElementById('footer-year').textContent = new Date().getFullYear();
     </script>
 
 </body>
+
 </html>

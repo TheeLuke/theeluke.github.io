@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survival Analysis – Luke Sullivan</title>
+    <meta name="description" content="">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    </button>
+
+    <!-- Back Nav -->
+    <div class="container">
+        <nav class="project-header-nav">
+            <a href="../index.html" class="back-link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Back to Portfolio
+            </a>
+        </nav>
+    </div>
+
+    <main class="container">
+        <div class="project-detail">
+
+            <!-- Header -->
+            <p class="project-detail-category">Deep Learning</p>
+            <h1 class="project-detail-title">Attention-Based Survival Analysis</h1>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <a href="survival_analysis_report.pdf" class="btn-action outline">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    Download Report
+                </a>
+            </div>
+
+            <!-- Content -->
+            <div class="prose-content">
+                <section>
+                    <h2>Project Description</h2>
+                    <p>Predicting time-to-event outcomes is a fundamental problem in healthcare,
+                        yet survival analysis remains challenging in practice due to limited sample sizes,
+                        heterogeneous covariates, and censoring. While attention-based Transformers have
+                        shown strong generalization on small tabular datasets, their effectiveness for
+                        survival prediction without task-specific training is not well understood. We
+                        evaluate TabPFN, a general-purpose pre-trained transformer for tabular data,
+                        on two clinical benchmarks, METABRIC and SUPPORT2, comparing its zero-shot
+                        performance against classical, ensemble, deep learning, and transformer-based
+                        survival models. Zero-shot TabPFN consistently outperforms traditional and deep
+                        survival baselines and achieves performance competitive with specialized survival
+                        Transformers, particularly in low-data regimes. Fine-tuning TabPFN on a large
+                        collection of synthetic survival datasets yields modest gains in probabilistic
+                        accuracy, suggesting that survival-aware adaptation is beneficial but limited.
+                        Overall, our results highlight the promise of general-purpose transformer priors
+                        for data-efficient survival modeling and motivate future work on
+                        survival-specific pretraining.
+                    </p>
+                    <img src="finetuning_diagram.png" alt="Survival Analysis diagram"
+                        onerror="this.onerror=null;this.src='https://placehold.co/800x450/1e1e2e/818cf8?text=Image+Not+Found';">
+                </section>
+
+                <section>
+                    <h2>Results</h2>
+                    <p>We evaluate the pre-trained TabPFN (Baseline) and our fine-tuned variant (TabPFN-FT) against the
+                        five baselines. We conduct a scaling analysis by training all models on increasing
+                        fractions of the training data (10%, 25%, 50%, 75%, and 100%) for both METABRIC
+                        and SUPPORT2.
+                    </p>
+                    <p>Performance on METABRIC and SUPPORT2:</p>
+                    <ul>
+                        <li><strong>Performance on METABRIC:</strong> The baseline TabPFN exhibits strong in-context
+                            learning, achieving
+                            discriminative performance competitive with specialized deep survival models without
+                            task-specific
+                            training. Across all data splits, the C-index and iAUC curves for the baseline (blue) and
+                            TabPFN-FT
+                            (pink) largely overlap, indicating similar ranking performance and only marginal
+                            discriminative gains
+                            from fine-tuning. In contrast, fine-tuning improves probabilistic calibration in low-data
+                            settings: at the
+                            25% split (n ≈ 380), TabPFN-FT yields a noticeable reduction in Integrated Brier Score,
+                            suggesting
+                            more accurate probability estimates when data are scarce.</li>
+                        <li><strong>Performance on SUPPORT2</strong> On SUPPORT2, TabPFN-FT performs similarly to the
+                            baseline across
+                            most metrics and training sizes, underscoring the strength and robustness of the pre-trained
+                            priors
+                            and suggesting that synthetic fine-tuning does not consistently yield additional gains. Both
+                            TabPFN
+                            variants remain competitive with established baselines such as DeepSurv and Random Survival
+                            Forests throughout the scaling range. Notably, fine-tuning provides a clear benefit in
+                            specific low-data
+                            conditions: at the 10% split (n = 728), TabPFN-FT improves probabilistic accuracy, reducing
+                            the
+                            Integrated Brier Score from ≈ 0.171 (Baseline) to ≈ 0.165.</li>
+                    </ul>
+                    <img src="results_plots.png" alt="Survival Analysis Results"
+                        onerror="this.onerror=null;this.src='https://placehold.co/800x450/1e1e2e/818cf8?text=Image+Not+Found';">
+                    <p>Overall, these results indicate that survival-aware fine-tuning can outperform
+                        the baseline TabPFN in certain regimes—particularly for probabilistic calibration in low-data
+                        set-
+                        tings—but that the performance boost is not consistent across datasets or sample sizes, with
+                        both
+                        variants generally exhibiting similar performance.</p>
+                </section>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="project-footer">
+        &copy; <span id="footer-year"></span> Luke Sullivan. All Rights Reserved.
+    </footer>
+
+    <script>
+        (function () {
+            const toggle = document.getElementById('theme-toggle');
+            const html = document.documentElement;
+            const saved = localStorage.getItem('theme');
+            if (saved) html.setAttribute('data-theme', saved);
+            toggle.addEventListener('click', () => {
+                const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                html.setAttribute('data-theme', next);
+                localStorage.setItem('theme', next);
+            });
+            document.getElementById('footer-year').textContent = new Date().getFullYear();
+        })();
+    </script>
+</body>
+
+</html>
